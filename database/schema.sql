@@ -11,9 +11,9 @@ create table task(
 	task_id int not null auto_increment,
     description varchar(255) not null,
     priority tinyint not null,
-    due_date timestamp not null,
+    due_date date not null,
     user_id varchar(8) not null,
     constraint task_pk primary key (task_id),
-	constraint user_fk foreign key (user_id) references user(user_id)
+	constraint user_fk2 foreign key (user_id) references user(user_id)
     )
 

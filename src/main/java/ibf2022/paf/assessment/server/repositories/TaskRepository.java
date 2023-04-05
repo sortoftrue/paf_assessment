@@ -1,7 +1,6 @@
 package ibf2022.paf.assessment.server.repositories;
 
-import java.sql.Timestamp;
-
+import java.sql.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -20,7 +19,9 @@ public class TaskRepository {
 
     public void insertTask(Task task, String userId){
 
-        int added = template.update(INSERT_TASK_SQL, task.getDescription(), task.getPriority(), new Timestamp(task.getDueDate().getTime()),userId);
+        Date sqlDate = new Date(task.getDueDate().getTime()); 
+
+        int added = template.update(INSERT_TASK_SQL, task.getDescription(), task.getPriority(), sqlDate,userId);
 
         System.out.println(added);
 

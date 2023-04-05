@@ -43,7 +43,11 @@ public class UserRepository {
 
         Integer added = template.update(INSERT_USER_SQL, uuid,user.getUsername(),user.getName());
 
-        return uuid;
+        if(added==1){
+            return uuid;
+        } else{
+            return "Insertion failed";
+        }
 
     }
 
